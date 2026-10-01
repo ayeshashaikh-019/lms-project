@@ -27,6 +27,23 @@ public class LibraryService {
     }
 
     /**
+     * Issues one copy of the given title and lowers the available copies.
+     *
+     * @param title the title being issued
+     * @return the copies left after the issue
+     * @throws BookUnavailableException when no copies of the title are left
+     */
+    public int issueBook(String title) throws BookUnavailableException {
+        int available = catalogue.getOrDefault(title, 0);
+        if (available == 0) {
+            throw new BookUnavailableException(
+                    "No copies of '" + title + "' are available to issue.");
+        }
+        catalogue.put(title, available - 1);
+        return available - 1;
+    }
+
+    /**
      * Returns a copy of a title to the shelf.
      *
      * @param title the title being returned
