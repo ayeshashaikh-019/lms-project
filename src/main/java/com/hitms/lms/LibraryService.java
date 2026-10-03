@@ -54,6 +54,16 @@ public class LibraryService {
     }
 
     /**
+     * Returns whether at least one copy of the title is on the shelf.
+     *
+     * @param title the title to check
+     * @return true when a copy can be issued, false otherwise
+     */
+    public boolean isAvailable(String title) {
+        return catalogue.getOrDefault(title, 0) > 0;
+    }
+
+    /**
      * Returns how many titles the library holds.
      *
      * @return the number of distinct titles in the catalogue
