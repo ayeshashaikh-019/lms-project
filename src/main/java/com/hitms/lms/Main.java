@@ -11,6 +11,18 @@ public class Main {
      * @param args not used
      */
     public static void main(String[] args) {
-        System.out.println("LMS starting...");
+        LibraryService service = new LibraryService();
+        LibraryLog.info("Starting the library session.");
+
+        service.addBook("Clean Code", 3);
+        LibraryLog.info("Copies of Clean Code: " + service.titleCount());
+
+        try {
+            service.issueBook("Clean Code");
+        } catch (BookUnavailableException problem) {
+            LibraryLog.warn(problem.getMessage());
+        }
+
+        LibraryLog.info("Library session finished.");
     }
 }
