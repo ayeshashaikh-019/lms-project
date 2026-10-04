@@ -13,6 +13,33 @@ public class LibraryService {
 
     private final Map<String, Integer> catalogue = new LinkedHashMap<>();
 
+    private final Map<Integer, String> members = new LinkedHashMap<>();
+
+    /**
+     * Registers a member under the given id.
+     *
+     * @param memberId the id to register the member under
+     * @param name     the name of the member
+     */
+    public void registerMember(int memberId, String name) {
+        members.put(memberId, name);
+    }
+
+    /**
+     * Looks up the name of a registered member.
+     *
+     * @param memberId the id to look up
+     * @return the name on record for that id
+     * @throws MemberNotFoundException when the id is not registered
+     */
+    public String findMemberById(int memberId) throws MemberNotFoundException {
+        String name = members.get(memberId);
+        if (name == null) {
+            throw new MemberNotFoundException(memberId);
+        }
+        return name;
+    }
+
     /**
      * Adds copies of a title, or tops up a title that is already there.
      *
