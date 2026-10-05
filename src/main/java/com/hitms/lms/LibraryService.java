@@ -54,8 +54,9 @@ public class LibraryService {
     }
 
     /**
-     * Issues one copy of the given title and lowers the available copies by one;
-     * the caller is told through the return value how many copies are left.
+* Issues one copy of the given title and lowers the available copies by one.
+     * The caller is told through the return value how many copies are left, and
+     * BookUnavailableException is thrown when the last copy has already gone.
      *
      * @param title the title being issued
      * @return the copies left after the issue
