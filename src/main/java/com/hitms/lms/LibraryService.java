@@ -46,8 +46,12 @@ public class LibraryService {
      * @param title the title to add
      * @param copies how many copies to add
      * @return the copies now available for the title
+     * @throws IllegalArgumentException when copies is negative
      */
     public int addBook(String title, int copies) {
+        if (copies < 0) {
+            throw new IllegalArgumentException("Copies cannot be negative.");
+        }
         int total = catalogue.getOrDefault(title, 0) + copies;
         catalogue.put(title, total);
         return total;
