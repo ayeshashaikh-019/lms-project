@@ -91,6 +91,19 @@ public class LibraryService {
     }
 
     /**
+     * Returns the total copies on loan across every title in the catalogue.
+     *
+     * @return the sum of the available copies of all titles
+     */
+    public int outstanding() {
+        int total = 0;
+        for (int copies : catalogue.values()) {
+            total += copies;
+        }
+        return total;
+    }
+
+    /**
      * Returns how many titles the library holds.
      *
      * @return the number of distinct titles in the catalogue
