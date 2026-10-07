@@ -26,9 +26,7 @@ public class AppLogger {
         LOGGER.setLevel(Level.INFO);
 
         LOGGER.info("Starting process...");
-        for (int step = 1; step <= 3; step++) {
-            LOGGER.info("Step completed: " + step + " of 3");
-        }
+        LOGGER.info("Step completed");
         LOGGER.info("Process finished.");
     }
 }
