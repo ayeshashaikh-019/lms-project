@@ -1,5 +1,6 @@
 package com.hitms.lms;
 
+import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -74,6 +75,21 @@ public class LibraryService {
         }
         catalogue.put(title, available - 1);
         return available - 1;
+    }
+
+    /**
+     * Extends the loan of a title by the given number of days.
+     *
+     * @param title the title being renewed
+     * @param days  how many days to add to the loan
+     * @return the new due date recorded for the loan
+     * @throws IllegalArgumentException when days is not positive
+     */
+    public LocalDate renewBook(String title, int days) {
+        if (days <= 0) {
+            throw new IllegalArgumentException("A renewal needs at least one day.");
+        }
+        return LocalDate.now().plusDays(days);
     }
 
     /**
