@@ -52,6 +52,9 @@ public class LibraryService {
         if (copies < 0) {
             throw new IllegalArgumentException("Copies cannot be negative.");
         }
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("A title is required.");
+        }
         int total = catalogue.getOrDefault(title, 0) + copies;
         catalogue.put(title, total);
         return total;
