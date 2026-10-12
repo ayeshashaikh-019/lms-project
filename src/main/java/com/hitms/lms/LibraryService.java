@@ -56,6 +56,9 @@ public class LibraryService {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("A title is required.");
         }
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("A title is required.");
+        }
         int total = catalogue.getOrDefault(title, 0) + copies;
         catalogue.put(title, total);
         return total;
